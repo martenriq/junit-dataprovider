@@ -110,7 +110,7 @@ public class DataProviderRunnerTest extends BaseTest {
         DataProviderRunner underTest = new DataProviderRunner(clazz);
 
         // Then:
-        assertThat(underTest).isNotNull();
+        assertThat(underTest).isNull();
         assertThat(underTest.getTestClass()).isNotNull();
         assertThat(underTest.getTestClass().getJavaClass()).isEqualTo(clazz);
     }
