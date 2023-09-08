@@ -14,7 +14,6 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
 
-
 permissions:
   contents: read
 
@@ -32,3 +31,11 @@ jobs:
         distribution: 'temurin'
     - name: Unit tests
       run: ./gradlew clean test
+    - name: Integration tests
+      run: ./gradlew integTest
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: '**/build/test-results/test/TEST*.xml'
